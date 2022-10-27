@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+html,
+body {
+  font: 400 1rem 'DM Sans', sans-serif;
+  background-color: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+img{
+  width: 50%;
+  height: auto;
 }
 
-.App-link {
-  color: #61dafb;
+main{
+  margin-top: calc(var(--header-hei) + 2rem);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul{
+  list-style: none;
+}
+
+:root{
+  font-size: 100%;
+  --header-hei: 4.5rem;
+  /* colors */
+  --hue: 0;
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 77% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+
+  --title-font-size: 1.87rem;
+}
+
+
+@media (min-width: 1200px) {
+  main{
+    margin-top: var(--header-hei);
+  } 
 }
