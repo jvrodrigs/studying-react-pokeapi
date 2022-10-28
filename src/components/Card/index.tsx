@@ -1,9 +1,7 @@
 import './styles.css'
 import { modelObjectsPokeApi } from "../../pages/home/Home";
 
-export function Card(props: modelObjectsPokeApi) {
-    console.log(props);
-    
+export function Card(props: modelObjectsPokeApi) {    
     return(
         <>
             <div key={props.name} className="card">

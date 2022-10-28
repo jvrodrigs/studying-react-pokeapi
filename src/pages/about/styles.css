@@ -1,0 +1,65 @@
+.container-about {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-about > p{
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.container-footer-about{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+    padding: 4rem 0;
+}
+
+.footer .brand .logo{
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.footer .brand p{
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+.footer .social a{
+    margin-right: 2rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.social a:hover{
+    transform: translateY(-15px);
+}
+
+.footer .social i{
+    font-size: 1.5rem;
+    color: var(--text-color);
+} 
+
+
+
+@media (min-width: 1100px) {
+
+    .container-about > p{
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer{
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5em;
+    }
+
+    .footer .logo{
+        font-size: 2.25rem;
+    }
+}
