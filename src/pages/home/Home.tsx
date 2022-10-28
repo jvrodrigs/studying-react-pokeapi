@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ButtonBackToTop } from '../../components/ButtonBackToTop';
 import { Card } from '../../components/Card';
 import { useApi } from '../../hooks/useApi';
 import './styles.css'
@@ -18,19 +19,11 @@ type modelResponsePokeApi = {
 export function Home(){
     const [limit, setLimit] = useState('10');
     const [search, setSearch] = useState("");
-    const [isBack, setIsBack] = useState(false);
 
     const { data: poke, error, isFetching } = useApi<modelResponsePokeApi>(`pokemon?offset=0&limit=${limit}`)
-    const contentClassName = isBack ? 'show' : '';
     
     const filteredRepos = search.length > 0 
     ? poke?.results.filter(repo => repo.name.includes(search)) : [];
-
-    useEffect( () => {
-        window.addEventListener('scroll', () => {
-            window.scrollY >= 1000 ? setIsBack(!isBack) : setIsBack(isBack);
-        });      
-    }, [])
     
     return(
         <>
@@ -101,9 +94,7 @@ export function Home(){
                 </div>
             </div>
 
-            <a href="#top">
-                <i className={`back_to_top icon-arrow-up ${contentClassName}`}></i>
-            </a>
+           <ButtonBackToTop />
         </>
     )
 }
