@@ -12,18 +12,21 @@ export function useApi<T = unknown>(url: string){
 
     useEffect( () => {
         async function fecthData() {
-            await api.get(url).then(response => {
-              response.data.results.map( 
-                (getPokemons: any) => axios.get(getPokemons.url).then(resInfo => getPokemons.url_image = resInfo.data.sprites.other.dream_world.front_default)
-              )
-              setData(response.data)
-            })
-            .catch(err => {
-              setError(err);
-            })
-            .finally( () => {
-              setIsFetching(false);
-            });
+          try {
+            const response = await api.get(url)
+            const data = response.data
+
+            for (let i = 0; i < data.results.length; i++) {
+              const imageResponse = await axios.get(data.results[i].url)
+              data.results[i].urlImage = imageResponse.data.sprites.other.dream_world.front_default
+            }
+
+            setData(data)
+              console.log(data)
+            setIsFetching(false);
+          } catch (error) {
+            setError(error as Error);
+          }
         }
 
         fecthData();

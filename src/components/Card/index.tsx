@@ -6,7 +6,7 @@ export function Card(props: modelObjectsPokeApi) {
         <>
             <div key={props.name} className="card">
                 <img 
-                    src={props.url_image !== undefined ? props.url_image : '../../assets/img/default_image.png'} 
+                    src={props.urlImage ?? '../../assets/img/default_image.png'} 
                     alt={`Imagem do ${props.name}`}/>
                 <h3 className="title">{props.name}</h3>
                 <p>

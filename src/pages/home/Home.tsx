@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ButtonBackToTop } from '../../components/ButtonBackToTop';
 import { Card } from '../../components/Card';
 import { useApi } from '../../hooks/useApi';
@@ -7,7 +7,7 @@ import './styles.css'
 export type modelObjectsPokeApi ={
     name: string;
     url: string;
-    url_image?: string;
+    urlImage?: string;
 }
 
 type modelResponsePokeApi = {
@@ -21,9 +21,9 @@ export function Home(){
     const [search, setSearch] = useState("");
 
     const { data: poke, error, isFetching } = useApi<modelResponsePokeApi>(`pokemon?offset=0&limit=${limit}`)
-    
-    const filteredRepos = search.length > 0 
-    ? poke?.results.filter(repo => repo.name.includes(search)) : [];
+
+    const parsePoke = search.length > 0 
+    ? poke?.results.filter(repo => repo.name.includes(search)) : poke?.results;
     
     return(
         <>
@@ -75,21 +75,7 @@ export function Home(){
 
                 <div className="cards grid-cards">
                     {
-                        search.length > 0 ?
-                        (
-                            filteredRepos?.map(data => {
-                                return(
-                                    <Card key={data.name} name={data.name} url={data.url} url_image={data.url_image}/>
-                                )
-                            })
-                        ) :
-                        (
-                            poke?.results.map(data => {
-                                return(
-                                    <Card key={data.name} name={data.name} url={data.url} url_image={data.url_image}/>
-                                )
-                            })
-                        )
+                        parsePoke?.map(data => <Card key={data.name} name={data.name} url={data.url} urlImage={data.urlImage}/>)
                     }
                 </div>
             </div>
